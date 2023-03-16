@@ -7,6 +7,7 @@ function CreateArea(props) {
     title: "",
     content: ""
   });
+  const [isClicked, setIsClicked] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -17,6 +18,10 @@ function CreateArea(props) {
         [name]: value
       };
     });
+  }
+
+  function handleClick() {
+   return setIsClicked(true);
   }
 
   function submitNote(event) {
@@ -31,20 +36,24 @@ function CreateArea(props) {
   return (
     <div>
       <form className="create-note">
-        <input
+        {isClicked && (<input
           name="title"
           onChange={handleChange}
           value={note.title}
           placeholder="Title"
-        />
+        />)}
+
         <textarea
           name="content"
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows="3"
+          rows={isClicked ? 3 : 1}
+          onClick={handleClick}
         />
+        <Zoom in={isClicked}>
         <button onClick={submitNote}><AddIcon /></button>
+        </Zoom>
       </form>
     </div>
   );
