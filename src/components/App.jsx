@@ -11,7 +11,7 @@ function App() {
     <div>
         <Heading />
         {notes.map(note => <NoteTemplate 
-            key={note.id}
+            key={note.key}
             title={note.title}
             content={note.content}
         />)}
