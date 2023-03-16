@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function CreateArea() {
+function CreateArea(props) {
   // const [contentText, setContentText] = useState("");
   // const [titleText, setTitleText] = useState("");
 
@@ -40,7 +40,13 @@ function CreateArea() {
           rows="3"
           value={text.content}
         />
-        <button>Add</button>
+        <button
+          onClick={() => {
+            props.onClick(text);
+          }}
+        >
+          Add
+        </button>
       </form>
     </div>
   );
